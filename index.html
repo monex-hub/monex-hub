@@ -2266,16 +2266,74 @@ section p{
 }
 
 /* APPLE LOGO */
-.apple-logo{
-  font-family:Arial,sans-serif;
-  font-size:48px;
-  line-height:1;
-  color:#fff;
-  text-shadow:
-    0 0 12px rgba(255,255,255,.45),
-    0 0 35px rgba(245,197,66,.3);
-  position:relative;
-  z-index:2;
+..diamond-logo{
+    width:48px;
+    height:48px;
+    position:relative;
+    z-index:2;
+
+    background:linear-gradient(
+        135deg,
+        #fff8cf 0%,
+        #f5c542 45%,
+        #b98718 100%
+    );
+
+    transform:rotate(45deg);
+
+    border:1px solid rgba(255,255,255,.65);
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.35),
+        0 0 30px rgba(245,197,66,.55),
+        0 0 60px rgba(245,197,66,.22);
+
+    animation:diamondGlow 2.5s ease-in-out infinite;
+}
+
+.diamond-logo::before{
+    content:"";
+    position:absolute;
+    width:18px;
+    height:18px;
+    top:5px;
+    left:5px;
+    background:rgba(255,255,255,.55);
+    filter:blur(5px);
+}
+
+.diamond-logo::after{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid rgba(255,255,255,.45);
+    box-shadow:
+        inset 0 0 12px rgba(255,255,255,.25);
+}
+
+@keyframes diamondGlow{
+    0%,100%{
+        transform:rotate(45deg) scale(1);
+        box-shadow:
+            0 0 12px rgba(255,255,255,.35),
+            0 0 30px rgba(245,197,66,.55),
+            0 0 60px rgba(245,197,66,.22);
+    }
+
+    50%{
+        transform:rotate(45deg) scale(1.1);
+        box-shadow:
+            0 0 18px rgba(255,255,255,.5),
+            0 0 45px rgba(245,197,66,.8),
+            0 0 85px rgba(245,197,66,.3);
+    }
+}
+
+@media(max-width:600px){
+    .diamond-logo{
+        width:42px;
+        height:42px;
+    }
 }
 
 /* PLAY BUTTON */
