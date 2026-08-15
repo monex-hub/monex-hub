@@ -2437,6 +2437,467 @@ section p{
     height:135px;
   }
 }
+    /* =====================================================
+   YASH WORLD — HYPER MODE
+   2 + 4 + 5 + 6 + 7 + 8 + 9
+   ===================================================== */
+
+/* ---------- 2. HYPER SPACE BACKGROUND ---------- */
+
+.hero{
+    perspective:1200px;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    pointer-events:none;
+
+    background:
+        radial-gradient(circle at 20% 30%,
+            rgba(245,197,66,.18),
+            transparent 18%),
+
+        radial-gradient(circle at 80% 70%,
+            rgba(245,197,66,.12),
+            transparent 20%),
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 80px,
+            rgba(245,197,66,.025) 81px,
+            transparent 82px
+        );
+
+    animation:hyperSpace 12s linear infinite;
+    z-index:0;
+}
+
+@keyframes hyperSpace{
+    0%{
+        transform:scale(1) rotate(0deg);
+    }
+
+    50%{
+        transform:scale(1.15) rotate(2deg);
+    }
+
+    100%{
+        transform:scale(1) rotate(0deg);
+    }
+}
+
+
+/* ---------- 4. CRAZY ORBIT RINGS ---------- */
+
+.scene{
+    perspective:1000px;
+    transform-style:preserve-3d;
+}
+
+.ring{
+    border-color:rgba(245,197,66,.65);
+
+    box-shadow:
+        0 0 10px rgba(245,197,66,.18),
+        0 0 30px rgba(245,197,66,.08);
+
+    filter:drop-shadow(
+        0 0 8px rgba(245,197,66,.18)
+    );
+}
+
+.r1{
+    animation:
+        hyperRing1 9s linear infinite !important;
+}
+
+.r2{
+    animation:
+        hyperRing2 7s linear infinite !important;
+}
+
+.r3{
+    animation:
+        hyperRing3 5s linear infinite !important;
+}
+
+.r4{
+    animation:
+        hyperRing4 12s linear infinite !important;
+}
+
+@keyframes hyperRing1{
+    from{
+        transform:
+            rotateX(66deg)
+            rotateZ(0deg)
+            scale(1);
+    }
+
+    to{
+        transform:
+            rotateX(66deg)
+            rotateZ(360deg)
+            scale(1.08);
+    }
+}
+
+@keyframes hyperRing2{
+    from{
+        transform:
+            rotateX(55deg)
+            rotateY(15deg)
+            rotateZ(360deg);
+    }
+
+    to{
+        transform:
+            rotateX(55deg)
+            rotateY(15deg)
+            rotateZ(0deg);
+    }
+}
+
+@keyframes hyperRing3{
+    from{
+        transform:
+            rotateX(75deg)
+            rotateY(-20deg)
+            rotateZ(0deg);
+    }
+
+    to{
+        transform:
+            rotateX(75deg)
+            rotateY(-20deg)
+            rotateZ(360deg);
+    }
+}
+
+@keyframes hyperRing4{
+    from{
+        transform:
+            rotateX(72deg)
+            rotateY(15deg)
+            rotateZ(0deg);
+    }
+
+    to{
+        transform:
+            rotateX(72deg)
+            rotateY(15deg)
+            rotateZ(-360deg);
+    }
+}
+
+
+/* ---------- 5. MOUSE PARALLAX ---------- */
+
+.hero-content,
+.scene{
+    transition:
+        transform .15s ease-out;
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+}
+
+
+/* ---------- 6. HYPER CURSOR ---------- */
+
+.hyper-cursor{
+    position:fixed;
+
+    width:14px;
+    height:14px;
+
+    pointer-events:none;
+
+    z-index:99999;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(45deg);
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8c7,
+            #f5c542,
+            #b98718
+        );
+
+    box-shadow:
+        0 0 10px #f5c542,
+        0 0 30px rgba(245,197,66,.65);
+
+    mix-blend-mode:screen;
+
+    transition:
+        width .15s,
+        height .15s;
+}
+
+.cursor-ring{
+    position:fixed;
+
+    width:38px;
+    height:38px;
+
+    border:1px solid rgba(245,197,66,.65);
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:99998;
+
+    transform:translate(-50%,-50%);
+
+    transition:
+        transform .12s ease-out,
+        width .25s,
+        height .25s;
+}
+
+.cursor-click{
+    position:fixed;
+
+    width:10px;
+    height:10px;
+
+    border:2px solid #f5c542;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:99997;
+
+    animation:clickBurst .6s ease-out forwards;
+}
+
+@keyframes clickBurst{
+    0%{
+        transform:translate(-50%,-50%) scale(1);
+        opacity:1;
+    }
+
+    100%{
+        transform:translate(-50%,-50%) scale(7);
+        opacity:0;
+    }
+}
+
+
+/* ---------- 7. CINEMATIC LOADING ---------- */
+
+.hyper-loader{
+    position:fixed;
+
+    inset:0;
+
+    background:#050505;
+
+    z-index:100000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+.hyper-loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-diamond{
+    width:60px;
+    height:60px;
+
+    transform:rotate(45deg);
+
+    border:2px solid #f5c542;
+
+    box-shadow:
+        0 0 20px #f5c542,
+        0 0 70px rgba(245,197,66,.35);
+
+    animation:
+        loaderSpin 1.5s linear infinite;
+}
+
+.loader-text{
+    margin-top:35px;
+
+    color:#f5c542;
+
+    font-size:11px;
+
+    letter-spacing:8px;
+
+    animation:
+        loaderPulse 1.2s infinite;
+}
+
+.loader-line{
+    width:180px;
+    height:1px;
+
+    margin-top:22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #f5c542,
+            transparent
+        );
+
+    animation:
+        loaderLine 1.5s infinite;
+}
+
+@keyframes loaderSpin{
+    to{
+        transform:rotate(405deg);
+    }
+}
+
+@keyframes loaderPulse{
+    50%{
+        opacity:.35;
+    }
+}
+
+@keyframes loaderLine{
+    0%{
+        transform:scaleX(.2);
+    }
+
+    50%{
+        transform:scaleX(1);
+    }
+
+    100%{
+        transform:scaleX(.2);
+    }
+}
+
+
+/* ---------- 8. SCROLL REVEAL ---------- */
+
+.hyper-reveal{
+    opacity:0;
+
+    transform:
+        translateY(80px)
+        scale(.94);
+
+    filter:blur(8px);
+
+    transition:
+        opacity .9s ease,
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        filter .9s ease;
+}
+
+.hyper-reveal.show{
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter:blur(0);
+}
+
+
+/* ---------- 9. HYPER BUTTON ---------- */
+
+.btn{
+    position:relative;
+
+    overflow:hidden;
+
+    isolation:isolate;
+}
+
+.btn::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:80%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.6),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    transition:left .6s ease;
+
+    z-index:-1;
+}
+
+.btn:hover::before{
+    left:140%;
+}
+
+.btn:hover{
+    transform:
+        translateY(-6px)
+        scale(1.04) !important;
+
+    box-shadow:
+        0 15px 45px rgba(245,197,66,.35),
+        0 0 50px rgba(245,197,66,.18) !important;
+}
+
+
+/* ---------- HOVER LINKS ---------- */
+
+nav a:hover{
+    text-shadow:
+        0 0 12px #f5c542,
+        0 0 25px rgba(245,197,66,.5);
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:800px){
+
+    .hyper-cursor,
+    .cursor-ring{
+        display:none;
+    }
+
+    .hero::before{
+        animation-duration:20s;
+    }
+}
 </style>
 
 </head>
