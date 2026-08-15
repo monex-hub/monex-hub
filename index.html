@@ -1,0 +1,2841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+
+<title>YASH WORLD — Premium Experience</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --gold:#f4c84f;
+    --gold2:#b98718;
+    --bg:#050504;
+    --text:#f7f4ea;
+    --muted:#8f8c83;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+
+/* NOISE */
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:80;
+    opacity:.045;
+
+    background-image:url(
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
+    );
+}
+
+
+/* PROGRESS */
+
+#progress{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:0;
+    height:2px;
+
+    background:var(--gold);
+
+    z-index:200;
+
+    box-shadow:
+    0 0 20px var(--gold);
+}
+
+
+/* HEADER */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+
+    height:86px;
+
+    z-index:100;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 5vw;
+
+    background:rgba(4,4,4,.68);
+
+    backdrop-filter:blur(20px);
+
+    border-bottom:
+    1px solid
+    rgba(244,200,79,.14);
+}
+
+
+.logo{
+    font-family:Georgia,serif;
+
+    font-size:31px;
+
+    letter-spacing:7px;
+
+    color:var(--gold);
+
+    text-shadow:
+    0 0 22px
+    rgba(244,200,79,.18);
+}
+
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+
+nav a{
+    color:#85827a;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    transition:.3s;
+}
+
+
+nav a:hover{
+    color:var(--gold);
+}
+
+
+.menu{
+    display:none;
+
+    border:0;
+
+    background:none;
+
+    color:var(--gold);
+
+    font-size:31px;
+}
+
+
+/* HERO */
+
+.hero{
+
+    min-height:100svh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:
+    86px 5vw 40px;
+
+    background:
+
+    radial-gradient(
+        circle at 78% 45%,
+        rgba(244,200,79,.13),
+        transparent 22%
+    ),
+
+    radial-gradient(
+        circle at 5% 90%,
+        rgba(244,200,79,.08),
+        transparent 27%
+    ),
+
+    linear-gradient(
+        125deg,
+        #050504,
+        #0d0c08 52%,
+        #050504
+    );
+}
+
+
+.grid{
+
+    width:min(1250px,100%);
+
+    min-height:
+    calc(100svh - 126px);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+
+/* HERO TEXT */
+
+.kicker{
+
+    font-size:11px;
+
+    letter-spacing:7px;
+
+    color:var(--gold);
+
+    margin-bottom:24px;
+
+    animation:
+    up 1s .1s both;
+}
+
+
+h1{
+
+    font-size:
+    clamp(70px,10vw,145px);
+
+    line-height:.79;
+
+    letter-spacing:-8px;
+
+    font-weight:900;
+
+    animation:
+    up 1s .2s both;
+}
+
+
+h1 span{
+
+    display:block;
+
+    color:var(--gold);
+
+    text-shadow:
+    0 0 35px
+    rgba(244,200,79,.1);
+}
+
+
+.lead{
+
+    max-width:620px;
+
+    margin-top:30px;
+
+    color:#9e9b93;
+
+    font-size:16px;
+
+    line-height:1.9;
+
+    animation:
+    up 1s .35s both;
+}
+
+
+/* BUTTONS */
+
+.actions{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:30px;
+
+    animation:
+    up 1s .5s both;
+}
+
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:230px;
+
+    height:58px;
+
+    padding:0 22px;
+
+    background:var(--gold);
+
+    color:#080806;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    border-radius:5px;
+
+    transition:.35s;
+}
+
+
+.btn:hover{
+
+    transform:
+    translateY(-4px);
+
+    box-shadow:
+    0 18px 45px
+    rgba(244,200,79,.22);
+}
+
+
+.btn.ghost{
+
+    background:
+    rgba(255,255,255,.02);
+
+    color:var(--gold);
+
+    border:
+    1px solid
+    rgba(244,200,79,.35);
+}
+
+
+/* ORBITAL SCENE */
+
+.scene{
+
+    height:610px;
+
+    position:relative;
+
+    display:grid;
+
+    place-items:center;
+}
+
+
+/* CENTRAL GLOW */
+
+.core{
+
+    width:118px;
+
+    height:118px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+        circle at 35% 30%,
+        #fff6c8 0 5%,
+        #f7cc54 17%,
+        #9b701a 39%,
+        transparent 72%
+    );
+
+    box-shadow:
+
+    0 0 40px
+    rgba(244,200,79,.55),
+
+    0 0 120px
+    rgba(244,200,79,.2);
+
+    animation:
+    breath 3s ease-in-out infinite;
+}
+
+
+/* RINGS */
+
+.ring{
+
+    position:absolute;
+
+    border:
+    1px solid
+    rgba(244,200,79,.5);
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 18px
+    rgba(244,200,79,.03);
+}
+
+
+.r1{
+
+    width:470px;
+    height:470px;
+
+    transform:
+    rotateX(66deg)
+    rotateZ(12deg);
+
+    animation:
+    spin 13s linear infinite;
+}
+
+
+.r2{
+
+    width:375px;
+    height:375px;
+
+    transform:
+    rotateX(66deg)
+    rotateZ(-53deg);
+
+    animation:
+    spinR 10s linear infinite;
+}
+
+
+.r3{
+
+    width:285px;
+    height:285px;
+
+    transform:
+    rotateX(66deg)
+    rotateZ(63deg);
+
+    animation:
+    spin 8s linear infinite;
+}
+
+
+.r4{
+
+    width:540px;
+    height:190px;
+
+    transform:
+    rotateX(72deg)
+    rotateZ(-10deg);
+
+    opacity:.28;
+
+    animation:
+    spinR 18s linear infinite;
+}
+
+
+/* ORBIT DOTS */
+
+.orb{
+
+    position:absolute;
+
+    width:8px;
+
+    height:8px;
+
+    background:var(--gold);
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 15px var(--gold);
+}
+
+
+.o1{
+    animation:
+    o1 7s linear infinite;
+}
+
+
+.o2{
+    animation:
+    o2 9s linear infinite;
+}
+
+
+.o3{
+    animation:
+    o3 6s linear infinite;
+}
+
+
+.o4{
+    animation:
+    o4 11s linear infinite;
+}
+
+
+/* STARS */
+
+.starfield{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+}
+
+
+.star{
+
+    position:absolute;
+
+    width:2px;
+
+    height:2px;
+
+    background:#f4d987;
+
+    border-radius:50%;
+
+    opacity:.35;
+}
+
+
+/* SCROLL */
+
+.scroll{
+
+    position:absolute;
+
+    bottom:24px;
+
+    left:50%;
+
+    transform:
+    translateX(-50%);
+
+    font-size:10px;
+
+    letter-spacing:6px;
+
+    color:#66635c;
+
+    white-space:nowrap;
+}
+
+
+.scroll:after{
+
+    content:"";
+
+    display:block;
+
+    width:1px;
+
+    height:30px;
+
+    background:
+    linear-gradient(
+        var(--gold),
+        transparent
+    );
+
+    margin:
+    12px auto 0;
+
+    animation:
+    drop 1.5s infinite;
+}
+
+
+/* SECTIONS */
+
+.section{
+
+    padding:
+    120px 5vw;
+
+    border-top:
+    1px solid
+    rgba(244,200,79,.1);
+
+    background:
+    linear-gradient(
+        180deg,
+        #070706,
+        #050504
+    );
+}
+
+
+.wrap{
+
+    width:min(1200px,100%);
+
+    margin:auto;
+}
+
+
+.eyebrow{
+
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:6px;
+
+    margin-bottom:15px;
+}
+
+
+.title{
+
+    font-size:
+    clamp(40px,6vw,78px);
+
+    line-height:.94;
+
+    letter-spacing:-4px;
+}
+
+
+.title span{
+
+    color:var(--gold);
+}
+
+
+/* CARDS */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+
+    margin-top:45px;
+}
+
+
+.card{
+
+    min-height:270px;
+
+    padding:25px;
+
+    border:
+    1px solid
+    rgba(244,200,79,.13);
+
+    border-radius:13px;
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.035),
+        rgba(244,200,79,.012)
+    );
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.45s;
+}
+
+
+.card:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+
+    height:130px;
+
+    right:-60px;
+
+    bottom:-60px;
+
+    background:
+    rgba(244,200,79,.09);
+
+    filter:blur(30px);
+
+    border-radius:50%;
+}
+
+
+.card:hover{
+
+    transform:
+    translateY(-9px);
+
+    border-color:
+    rgba(244,200,79,.45);
+
+    box-shadow:
+    0 25px 60px
+    rgba(0,0,0,.3);
+}
+
+
+.icon{
+
+    font-size:27px;
+
+    color:var(--gold);
+
+    margin-top:8px;
+}
+
+
+.card h3{
+
+    margin-top:60px;
+
+    color:#eee9dc;
+
+    font-size:17px;
+
+    letter-spacing:1px;
+}
+
+
+.card p{
+
+    margin-top:13px;
+
+    color:#77746c;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+
+.line{
+
+    width:35px;
+
+    height:2px;
+
+    background:var(--gold);
+
+    margin-top:22px;
+}
+
+
+/* ABOUT */
+
+.about{
+
+    display:grid;
+
+    grid-template-columns:
+    1.1fr .9fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+
+.quote{
+
+    font-family:Georgia,serif;
+
+    font-size:
+    clamp(35px,5vw,68px);
+
+    line-height:1.02;
+}
+
+
+.quote span{
+
+    color:var(--gold);
+}
+
+
+/* STATS */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:12px;
+}
+
+
+.stat{
+
+    padding:25px;
+
+    border:
+    1px solid
+    rgba(244,200,79,.13);
+
+    border-radius:10px;
+}
+
+
+.stat b{
+
+    font-size:38px;
+
+    color:var(--gold);
+}
+
+
+.stat small{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#77746c;
+
+    letter-spacing:2px;
+}
+
+
+/* CTA */
+
+.cta{
+
+    padding:
+    130px 5vw;
+
+    text-align:center;
+
+    border-top:
+    1px solid
+    rgba(244,200,79,.1);
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(244,200,79,.11),
+        transparent 35%
+    );
+}
+
+
+.cta h2{
+
+    font-size:
+    clamp(50px,9vw,120px);
+
+    line-height:.82;
+
+    letter-spacing:-7px;
+}
+
+
+.cta h2 span{
+
+    color:var(--gold);
+}
+
+
+.cta p{
+
+    max-width:560px;
+
+    margin:25px auto;
+
+    color:#77746c;
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+
+/* FOOTER */
+
+footer{
+
+    padding:
+    30px 5vw;
+
+    border-top:
+    1px solid
+    rgba(244,200,79,.1);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#55524c;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+}
+
+
+/* REVEAL */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+    translateY(35px);
+
+    transition:
+    1s cubic-bezier(.2,.7,.2,1);
+}
+
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes up{
+
+    from{
+        opacity:0;
+        transform:translateY(28px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+
+@keyframes breath{
+
+    50%{
+
+        transform:scale(1.14);
+
+        box-shadow:
+
+        0 0 65px
+        rgba(244,200,79,.8),
+
+        0 0 150px
+        rgba(244,200,79,.25);
+    }
+}
+
+
+@keyframes spin{
+
+    to{
+
+        transform:
+        rotateX(66deg)
+        rotateZ(372deg);
+    }
+}
+
+
+@keyframes spinR{
+
+    to{
+
+        transform:
+        rotateX(66deg)
+        rotateZ(-413deg);
+    }
+}
+
+
+@keyframes o1{
+
+    from{
+        transform:
+        rotate(0)
+        translateX(235px);
+    }
+
+    to{
+        transform:
+        rotate(360deg)
+        translateX(235px);
+    }
+}
+
+
+@keyframes o2{
+
+    from{
+        transform:
+        rotate(360deg)
+        translateX(187px);
+    }
+
+    to{
+        transform:
+        rotate(0)
+        translateX(187px);
+    }
+}
+
+
+@keyframes o3{
+
+    from{
+        transform:
+        rotate(0)
+        translateX(143px);
+    }
+
+    to{
+        transform:
+        rotate(360deg)
+        translateX(143px);
+    }
+}
+
+
+@keyframes o4{
+
+    from{
+        transform:
+        rotate(0)
+        translateX(270px);
+    }
+
+    to{
+        transform:
+        rotate(-360deg)
+        translateX(270px);
+    }
+}
+
+
+@keyframes drop{
+
+    50%{
+
+        opacity:.25;
+
+        transform:
+        translateY(8px);
+    }
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    header{
+
+        height:70px;
+
+        padding:
+        0 22px;
+    }
+
+
+    .logo{
+
+        font-size:25px;
+    }
+
+
+    .menu{
+
+        display:block;
+    }
+
+
+    nav{
+
+        display:none;
+
+        position:absolute;
+
+        top:70px;
+
+        left:0;
+
+        right:0;
+
+        background:
+        rgba(5,5,4,.97);
+
+        padding:25px;
+
+        flex-direction:column;
+
+        gap:22px;
+
+        border-bottom:
+        1px solid
+        rgba(244,200,79,.15);
+    }
+
+
+    nav.open{
+
+        display:flex;
+    }
+
+
+    .hero{
+
+        padding:
+        70px 22px 35px;
+    }
+
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+        min-height:
+        calc(100svh - 105px);
+    }
+
+
+    .hero-content{
+
+        padding-top:55px;
+    }
+
+
+    .kicker{
+
+        font-size:9px;
+
+        letter-spacing:5px;
+    }
+
+
+    .lead{
+
+        font-size:14px;
+
+        line-height:1.8;
+    }
+
+
+    h1{
+
+        font-size:68px;
+
+        letter-spacing:-5px;
+    }
+
+
+    .actions{
+
+        flex-direction:column;
+    }
+
+
+    .btn{
+
+        width:100%;
+    }
+
+
+    .scene{
+
+        height:410px;
+    }
+
+
+    .r1{
+
+        width:310px;
+        height:310px;
+    }
+
+
+    .r2{
+
+        width:245px;
+        height:245px;
+    }
+
+
+    .r3{
+
+        width:185px;
+        height:185px;
+    }
+
+
+    .r4{
+
+        width:350px;
+        height:130px;
+    }
+
+
+    @keyframes o1{
+
+        from{
+            transform:
+            rotate(0)
+            translateX(155px);
+        }
+
+        to{
+            transform:
+            rotate(360deg)
+            translateX(155px);
+        }
+    }
+
+
+    @keyframes o2{
+
+        from{
+            transform:
+            rotate(360deg)
+            translateX(122px);
+        }
+
+        to{
+            transform:
+            rotate(0)
+            translateX(122px);
+        }
+    }
+
+
+    @keyframes o3{
+
+        from{
+            transform:
+            rotate(0)
+            translateX(92px);
+        }
+
+        to{
+            transform:
+            rotate(360deg)
+            translateX(92px);
+        }
+    }
+
+
+    @keyframes o4{
+
+        from{
+            transform:
+            rotate(0)
+            translateX(175px);
+        }
+
+        to{
+            transform:
+            rotate(-360deg)
+            translateX(175px);
+        }
+    }
+
+
+    .scroll{
+
+        bottom:12px;
+    }
+
+
+    .section{
+
+        padding:
+        90px 22px;
+    }
+
+
+    .cards{
+
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+
+    .card{
+
+        min-height:235px;
+    }
+
+
+    .card h3{
+
+        margin-top:35px;
+    }
+
+
+    .about{
+
+        grid-template-columns:1fr;
+
+        gap:35px;
+    }
+
+
+    .cta{
+
+        padding:
+        100px 22px;
+    }
+
+
+    .cta h2{
+
+        letter-spacing:-4px;
+    }
+
+
+    footer{
+
+        flex-direction:column;
+
+        gap:10px;
+    }
+
+}
+
+
+@media(max-width:470px){
+
+    .cards{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .card{
+
+        min-height:205px;
+    }
+
+}
+
+.reveal{
+    opacity:1 !important;
+    transform:none !important;
+    visibility:visible !important;
+}
+
+.section{
+    display:block !important;
+    visibility:visible !important;
+    min-height:auto !important;
+}
+
+.cards{
+    display:grid !important;
+}
+
+.about{
+    display:grid !important;
+}
+
+.cta{
+    display:block !important;
+    visibility:visible !important;
+}
+    .reveal{
+    opacity:1 !important;
+    transform:none !important;
+    visibility:visible !important;
+}
+
+.section{
+    display:block !important;
+    visibility:visible !important;
+    min-height:auto !important;
+}
+
+.cards{
+    display:grid !important;
+}
+
+.about{
+    display:grid !important;
+}
+/* ===== YASH GOD LEVEL ===== */
+
+:root{
+    --gold:#f5c542;
+    --gold2:#ffe28a;
+}
+
+body{
+    background:
+    radial-gradient(circle at 50% 20%,rgba(245,197,66,.14),transparent 30%),
+    radial-gradient(circle at 80% 60%,rgba(245,197,66,.08),transparent 25%),
+    linear-gradient(180deg,#050504,#0b0904,#020202) !important;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:-30%;
+    pointer-events:none;
+    background:radial-gradient(circle,rgba(245,197,66,.09),transparent 22%);
+    animation:goldAura 7s ease-in-out infinite alternate;
+    z-index:-1;
+}
+
+@keyframes goldAura{
+    0%{
+        transform:scale(.85) rotate(0deg);
+        opacity:.35;
+    }
+    100%{
+        transform:scale(1.15) rotate(15deg);
+        opacity:1;
+    }
+}
+
+header{
+    background:rgba(3,3,3,.75) !important;
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(245,197,66,.25) !important;
+    box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+
+.logo{
+    color:var(--gold) !important;
+    text-shadow:
+    0 0 10px rgba(245,197,66,.4),
+    0 0 30px rgba(245,197,66,.2);
+}
+
+h1,h2,h3{
+    text-shadow:0 0 30px rgba(245,197,66,.15);
+}
+
+button,
+.cta,
+a{
+    transition:all .35s ease !important;
+}
+
+button:hover,
+.cta:hover{
+    transform:translateY(-5px) scale(1.02);
+    box-shadow:
+    0 15px 40px rgba(245,197,66,.25),
+    0 0 25px rgba(245,197,66,.15);
+}
+
+.card,
+.cards > *,
+.feature,
+.panel{
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.06),
+        rgba(255,255,255,.015)
+    ) !important;
+
+    border:1px solid rgba(245,197,66,.18) !important;
+
+    box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 20px 50px rgba(0,0,0,.35) !important;
+
+    backdrop-filter:blur(15px);
+
+    transition:all .4s ease !important;
+}
+
+.card:hover,
+.cards > *:hover,
+.feature:hover,
+.panel:hover{
+    transform:translateY(-8px);
+    border-color:rgba(245,197,66,.6) !important;
+    box-shadow:
+    0 25px 70px rgba(0,0,0,.55),
+    0 0 35px rgba(245,197,66,.15) !important;
+}
+
+.section::after{
+    content:"";
+    display:block;
+    width:70%;
+    height:1px;
+    margin:70px auto 0;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(245,197,66,.5),
+        transparent
+    );
+}
+
+.scroll,
+.scroll-down{
+    color:rgba(245,197,66,.7) !important;
+    animation:scrollGlow 2s infinite;
+}
+
+@keyframes scrollGlow{
+    0%,100%{
+        opacity:.35;
+        transform:translateY(0);
+    }
+    50%{
+        opacity:1;
+        transform:translateY(6px);
+    }
+}
+
+::selection{
+    background:var(--gold);
+    color:#050505;
+}
+
+::-webkit-scrollbar{
+    width:5px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        var(--gold2),
+        var(--gold)
+    );
+    border-radius:20px;
+}
+/* ===== YASH WORLD GOD LEVEL V3 ===== */
+
+:root{
+  --gold:#f5c542;
+  --gold2:#fff0a3;
+  --dark:#050505;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% 20%,rgba(245,197,66,.12),transparent 28%),
+    radial-gradient(circle at 20% 70%,rgba(245,197,66,.07),transparent 25%),
+    #050505 !important;
+  color:#fff !important;
+  overflow-x:hidden;
+}
+
+/* GOLD LIGHT MOVEMENT */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-30%;
+  pointer-events:none;
+  background:
+    radial-gradient(circle,rgba(245,197,66,.13) 0%,transparent 18%);
+  animation:goldMove 8s ease-in-out infinite alternate;
+  z-index:-1;
+}
+
+@keyframes goldMove{
+  0%{
+    transform:translate(-15%,-10%) scale(.8);
+  }
+  100%{
+    transform:translate(15%,15%) scale(1.4);
+  }
+}
+
+/* HEADER */
+header{
+  background:rgba(5,5,5,.78) !important;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(245,197,66,.22) !important;
+  box-shadow:0 10px 40px rgba(0,0,0,.45);
+  position:sticky !important;
+  top:0;
+  z-index:9999;
+}
+
+/* LOGO */
+.logo{
+  color:var(--gold) !important;
+  text-shadow:
+    0 0 10px rgba(245,197,66,.35),
+    0 0 35px rgba(245,197,66,.18);
+  letter-spacing:6px;
+}
+
+/* GOLD TEXT */
+h1,h2,h3{
+  text-shadow:
+    0 0 18px rgba(245,197,66,.18);
+}
+
+/* BUTTONS */
+button,
+.btn,
+.cta,
+a{
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease,
+    background .35s ease !important;
+}
+
+button:hover,
+.btn:hover,
+.cta:hover{
+  transform:translateY(-5px) scale(1.03);
+  box-shadow:
+    0 12px 35px rgba(245,197,66,.25),
+    0 0 45px rgba(245,197,66,.12);
+}
+
+/* PREMIUM CARDS */
+.cards{
+  gap:22px !important;
+}
+
+.cards > *,
+.card{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(245,197,66,.025)
+    ) !important;
+
+  border:1px solid rgba(245,197,66,.16) !important;
+  border-radius:22px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 15px 50px rgba(0,0,0,.35);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    border-color .45s ease,
+    box-shadow .45s ease !important;
+}
+
+.cards > *:hover,
+.card:hover{
+  transform:translateY(-12px);
+  border-color:rgba(245,197,66,.55) !important;
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.55),
+    0 0 35px rgba(245,197,66,.13);
+}
+
+/* GOLD LINE */
+section{
+  position:relative;
+}
+
+section::before{
+  content:"";
+  display:block;
+  width:70px;
+  height:2px;
+  margin:0 auto 35px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+  box-shadow:0 0 15px var(--gold);
+}
+
+/* SCROLL REVEAL */
+.reveal{
+  opacity:1 !important;
+  transform:none !important;
+  visibility:visible !important;
+}
+
+/* FLOATING EFFECT */
+.hero,
+.hero-content{
+  animation:heroFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-8px);
+  }
+}
+
+/* GOLD SHINE */
+.logo::after{
+  content:"";
+  position:absolute;
+  width:80px;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent
+  );
+  transform:translateX(-150px);
+  animation:shine 4s infinite;
+}
+
+@keyframes shine{
+  0%,65%{
+    transform:translateX(-150px);
+  }
+  100%{
+    transform:translateX(180px);
+  }
+}
+
+/* PREMIUM SCROLLBAR */
+::-webkit-scrollbar{
+  width:5px;
+}
+
+::-webkit-scrollbar-track{
+  background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(
+    180deg,
+    var(--gold2),
+    var(--gold)
+  );
+  border-radius:20px;
+  box-shadow:0 0 15px var(--gold);
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  body{
+    font-size:14px;
+  }
+
+  header{
+    padding-left:15px !important;
+    padding-right:15px !important;
+  }
+
+  .cards{
+    grid-template-columns:1fr !important;
+  }
+
+  .cards > *,
+  .card{
+    border-radius:18px !important;
+  }
+}
+/* ===== YASH WORLD GOD LEVEL V4 ===== */
+
+:root{
+  --gold:#f5c542;
+  --gold-light:#ffe89a;
+}
+
+/* HERO MUCH BIGGER */
+.hero{
+  min-height:100vh !important;
+  padding:110px 7vw 100px !important;
+  display:flex !important;
+  align-items:center !important;
+  position:relative;
+}
+
+/* HERO CONTENT */
+.hero-content{
+  max-width:1000px !important;
+  width:100% !important;
+  position:relative;
+  z-index:5;
+}
+
+/* BIG PREMIUM TITLE */
+.hero h1,
+.hero-title{
+  font-size:clamp(64px,10vw,145px) !important;
+  line-height:.88 !important;
+  letter-spacing:-5px !important;
+  font-weight:900 !important;
+  margin:25px 0 35px !important;
+
+  background:linear-gradient(
+    135deg,
+    #ffffff 10%,
+    var(--gold-light) 48%,
+    var(--gold) 75%,
+    #fff 100%
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent !important;
+
+  filter:drop-shadow(0 0 25px rgba(245,197,66,.16));
+}
+
+/* BIG DESCRIPTION */
+.hero p{
+  max-width:720px !important;
+  font-size:clamp(17px,2vw,23px) !important;
+  line-height:1.8 !important;
+  color:rgba(255,255,255,.65) !important;
+}
+
+/* BIG BUTTONS */
+.hero button,
+.hero .btn,
+.hero .cta,
+.hero a{
+  min-height:68px !important;
+  padding:0 42px !important;
+  font-size:15px !important;
+  letter-spacing:2px !important;
+  border-radius:14px !important;
+}
+
+/* BUTTON GOLD GLOW */
+.hero .primary,
+.hero .btn-primary,
+.hero .cta{
+  background:linear-gradient(
+    135deg,
+    #ffe18a,
+    #f5c542,
+    #d99e16
+  ) !important;
+
+  box-shadow:
+    0 15px 45px rgba(245,197,66,.22),
+    inset 0 1px rgba(255,255,255,.5) !important;
+}
+
+/* BIGGER SECTIONS */
+section{
+  min-height:90vh !important;
+  padding:120px 7vw !important;
+}
+
+/* BIG SECTION TITLES */
+section h2{
+  font-size:clamp(42px,6vw,85px) !important;
+  line-height:1 !important;
+  margin-bottom:30px !important;
+}
+
+/* BIGGER CARDS */
+.cards{
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr)) !important;
+  gap:30px !important;
+  margin-top:55px !important;
+}
+
+.cards > *,
+.card{
+  min-height:280px !important;
+  padding:35px !important;
+  border-radius:26px !important;
+}
+
+/* CARD TITLE */
+.cards h3,
+.card h3{
+  font-size:28px !important;
+  margin-bottom:18px !important;
+}
+
+/* CARD TEXT */
+.cards p,
+.card p{
+  font-size:16px !important;
+  line-height:1.75 !important;
+}
+
+/* BIG GOLD GLOW IN BACKGROUND */
+body::after{
+  content:"";
+  position:fixed;
+  width:500px;
+  height:500px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(245,197,66,.16) 0%,
+    rgba(245,197,66,.06) 25%,
+    transparent 70%
+  );
+  filter:blur(20px);
+  pointer-events:none;
+  z-index:-2;
+  animation:godGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes godGlow{
+  from{
+    transform:translate(-50%,-50%) scale(.75);
+    opacity:.45;
+  }
+  to{
+    transform:translate(-50%,-50%) scale(1.3);
+    opacity:1;
+  }
+}
+
+/* GOLD BORDER LIGHT */
+.cards > *,
+.card{
+  position:relative;
+  overflow:hidden;
+}
+
+.cards > *::before,
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:80%;
+  height:1px;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-light),
+    transparent
+  );
+
+  animation:cardShine 4s infinite;
+}
+
+@keyframes cardShine{
+  0%{left:-120%}
+  45%,100%{left:140%}
+}
+
+/* BIGGER LOGO */
+.logo{
+  font-size:32px !important;
+  letter-spacing:8px !important;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  .hero{
+    min-height:100vh !important;
+    padding:85px 22px 70px !important;
+  }
+
+  .hero h1,
+  .hero-title{
+    font-size:clamp(55px,18vw,90px) !important;
+    letter-spacing:-3px !important;
+  }
+
+  .hero p{
+    font-size:16px !important;
+    line-height:1.7 !important;
+  }
+
+  .hero button,
+  .hero .btn,
+  .hero .cta,
+  .hero a{
+    width:100% !important;
+    min-height:62px !important;
+  }
+
+  section{
+    min-height:80vh !important;
+    padding:90px 22px !important;
+  }
+
+  section h2{
+    font-size:48px !important;
+  }
+
+  .cards{
+    grid-template-columns:1fr !important;
+  }
+
+  .cards > *,
+  .card{
+    min-height:240px !important;
+  }
+}
+/* ===== YASH WORLD — BIGGER PREMIUM SCALE ===== */
+
+html{
+  font-size:17px !important;
+}
+
+body{
+  min-width:100% !important;
+}
+
+/* HEADER BIGGER */
+header{
+  min-height:82px !important;
+  padding:0 7vw !important;
+}
+
+.logo{
+  font-size:34px !important;
+}
+
+/* MAIN CONTENT WIDER */
+main{
+  width:100% !important;
+}
+
+/* HERO BIGGER */
+.hero{
+  width:100% !important;
+  min-height:105vh !important;
+  padding:130px 8vw 120px !important;
+}
+
+.hero-content{
+  width:min(1100px,100%) !important;
+  max-width:1100px !important;
+}
+
+/* HERO LABEL */
+.hero .eyebrow,
+.hero .subtitle{
+  font-size:16px !important;
+  letter-spacing:7px !important;
+}
+
+/* TITLE */
+.hero h1,
+.hero-title{
+  font-size:clamp(72px,11vw,155px) !important;
+  margin:35px 0 40px !important;
+}
+
+/* DESCRIPTION */
+.hero p{
+  max-width:820px !important;
+  font-size:20px !important;
+  line-height:1.9 !important;
+}
+
+/* BUTTON AREA */
+.hero .buttons,
+.hero-actions{
+  gap:20px !important;
+  margin-top:42px !important;
+}
+
+.hero button,
+.hero .btn,
+.hero .cta,
+.hero a{
+  min-height:76px !important;
+  padding:0 50px !important;
+  font-size:16px !important;
+  border-radius:16px !important;
+}
+
+/* ALL SECTIONS BIGGER */
+section{
+  width:100% !important;
+  min-height:100vh !important;
+  padding:140px 8vw !important;
+}
+
+/* SECTION HEADING */
+section h2{
+  font-size:clamp(52px,7vw,95px) !important;
+  margin-bottom:40px !important;
+}
+
+/* SECTION TEXT */
+section p{
+  font-size:18px !important;
+  line-height:1.85 !important;
+}
+
+/* CARDS BIGGER */
+.cards{
+  width:100% !important;
+  max-width:1400px !important;
+  margin:65px auto 0 !important;
+  gap:35px !important;
+}
+
+.cards > *,
+.card{
+  min-height:330px !important;
+  padding:42px !important;
+  border-radius:30px !important;
+}
+
+/* CARD HEADING */
+.cards h3,
+.card h3{
+  font-size:32px !important;
+}
+
+/* CARD TEXT */
+.cards p,
+.card p{
+  font-size:17px !important;
+  line-height:1.8 !important;
+}
+
+/* ABOUT AREA */
+.about{
+  width:100% !important;
+  min-height:90vh !important;
+}
+
+/* BIGGER SPACING */
+.hero + section{
+  padding-top:150px !important;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  html{
+    font-size:16px !important;
+  }
+
+  header{
+    min-height:72px !important;
+    padding:0 18px !important;
+  }
+
+  .logo{
+    font-size:27px !important;
+  }
+
+  .hero{
+    min-height:105vh !important;
+    padding:100px 24px 90px !important;
+  }
+
+  .hero h1,
+  .hero-title{
+    font-size:clamp(62px,19vw,100px) !important;
+    margin:28px 0 30px !important;
+  }
+
+  .hero p{
+    font-size:16px !important;
+    line-height:1.8 !important;
+  }
+
+  .hero button,
+  .hero .btn,
+  .hero .cta,
+  .hero a{
+    min-height:68px !important;
+    width:100% !important;
+    padding:0 25px !important;
+  }
+
+  section{
+    min-height:90vh !important;
+    padding:100px 24px !important;
+  }
+
+  section h2{
+    font-size:52px !important;
+  }
+
+  .cards{
+    gap:24px !important;
+    margin-top:45px !important;
+  }
+
+  .cards > *,
+  .card{
+    min-height:280px !important;
+    padding:32px !important;
+    border-radius:25px !important;
+  }
+}
+/* ===== APPLE PLAY EXPERIENCE ===== */
+
+.apple-play{
+  position:relative;
+  margin:80px auto 0;
+  width:150px;
+  height:150px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  cursor:pointer;
+  z-index:20;
+  animation:appleFloat 3s ease-in-out infinite;
+}
+
+.apple-play::before{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:120px;
+  border:1px solid rgba(245,197,66,.35);
+  border-radius:50%;
+  animation:playRing 2.5s ease-out infinite;
+}
+
+.apple-play::after{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:150px;
+  border:1px solid rgba(245,197,66,.12);
+  border-radius:50%;
+  animation:playRing 2.5s ease-out 1.2s infinite;
+}
+
+/* APPLE LOGO */
+.apple-logo{
+  font-family:Arial,sans-serif;
+  font-size:48px;
+  line-height:1;
+  color:#fff;
+  text-shadow:
+    0 0 12px rgba(255,255,255,.45),
+    0 0 35px rgba(245,197,66,.3);
+  position:relative;
+  z-index:2;
+}
+
+/* PLAY BUTTON */
+.play-circle{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:linear-gradient(
+    135deg,
+    #fff0a3,
+    #f5c542
+  );
+
+  box-shadow:
+    0 0 20px rgba(245,197,66,.55),
+    0 0 55px rgba(245,197,66,.2);
+
+  position:relative;
+  z-index:2;
+}
+
+.play-circle::after{
+  content:"";
+  margin-left:4px;
+  width:0;
+  height:0;
+  border-top:8px solid transparent;
+  border-bottom:8px solid transparent;
+  border-left:12px solid #080808;
+}
+
+/* TEXT */
+.play-text{
+  font-size:9px;
+  letter-spacing:4px;
+  color:rgba(255,255,255,.5);
+  position:relative;
+  z-index:2;
+}
+
+/* FLOAT */
+@keyframes appleFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(12px);
+  }
+}
+
+/* PULSE RINGS */
+@keyframes playRing{
+  0%{
+    transform:scale(.65);
+    opacity:.8;
+  }
+
+  70%{
+    transform:scale(1.25);
+    opacity:0;
+  }
+
+  100%{
+    transform:scale(1.25);
+    opacity:0;
+  }
+}
+
+/* HOVER */
+.apple-play:hover{
+  animation-play-state:paused;
+  transform:scale(1.12);
+}
+
+.apple-play:hover .play-circle{
+  box-shadow:
+    0 0 30px rgba(245,197,66,.8),
+    0 0 80px rgba(245,197,66,.3);
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .apple-play{
+    margin-top:65px;
+    width:135px;
+    height:135px;
+  }
+
+  .apple-play::before{
+    width:105px;
+    height:105px;
+  }
+
+  .apple-play::after{
+    width:135px;
+    height:135px;
+  }
+}
+</style>
+
+</head>
+
+<div class="apple-play" onclick="window.scrollTo({
+  top: window.innerHeight,
+  behavior: 'smooth'
+})">
+
+  <div class="apple-logo"></div>
+
+  <div class="play-circle"></div>
+
+  <div class="play-text">
+    PLAY EXPERIENCE
+  </div>
+
+</div>
+<body>
+
+
+<div id="progress"></div>
+
+
+<header>
+
+    <div class="logo">
+        YASH
+    </div>
+
+
+    <nav id="nav">
+
+        <a href="#home">
+            HOME
+        </a>
+
+        <a href="#world">
+            WORLD
+        </a>
+
+        <a href="#about">
+            ABOUT
+        </a>
+
+        <a href="#contact">
+            CONTACT
+        </a>
+
+    </nav>
+
+
+    <button
+        class="menu"
+        id="menu">
+
+        ☰
+
+    </button>
+
+</header>
+
+
+
+<main>
+
+
+<section
+    class="hero"
+    id="home">
+
+
+    <div
+        class="starfield"
+        id="stars">
+    </div>
+
+
+    <div class="grid">
+
+
+        <div class="hero-content">
+
+
+            <div class="kicker">
+                PREMIUM EXPERIENCE
+            </div>
+
+
+            <h1>
+
+                YASH
+
+                <span>
+                    WORLD.
+                </span>
+
+            </h1>
+
+
+            <p class="lead">
+
+                Welcome to the official YASH
+                experience — a premium digital
+                world with cinematic animation,
+                glowing elements and a powerful
+                modern design.
+
+            </p>
+
+
+            <div class="actions">
+
+
+                <a
+                    class="btn"
+                    href="#world">
+
+                    ENTER THE WORLD →
+
+                </a>
+
+
+                <a
+                    class="btn ghost"
+                    href="#about">
+
+                    EXPLORE EXPERIENCE
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="scene">
+
+
+            <div class="ring r1"></div>
+
+            <div class="ring r2"></div>
+
+            <div class="ring r3"></div>
+
+            <div class="ring r4"></div>
+
+
+            <div class="core"></div>
+
+
+            <i class="orb o1"></i>
+
+            <i class="orb o2"></i>
+
+            <i class="orb o3"></i>
+
+            <i class="orb o4"></i>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="scroll">
+        SCROLL DOWN
+    </div>
+
+
+</section>
+
+
+
+<section
+    class="section"
+    id="world">
+
+
+    <div class="wrap">
+
+
+        <div class="reveal">
+
+
+            <div class="eyebrow">
+                01 / THE EXPERIENCE
+            </div>
+
+
+            <div class="title">
+
+                BUILT TO FEEL
+
+                <span>
+                    DIFFERENT.
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="cards">
+
+
+            <article class="card reveal">
+
+                <div class="icon">
+                    ♛
+                </div>
+
+
+                <h3>
+                    PREMIUM
+                </h3>
+
+
+                <p>
+
+                    Luxury visual language
+                    with refined spacing
+                    and cinematic lighting.
+
+                </p>
+
+
+                <div class="line"></div>
+
+            </article>
+
+
+
+            <article class="card reveal">
+
+                <div class="icon">
+                    ϟ
+                </div>
+
+
+                <h3>
+                    POWERFUL
+                </h3>
+
+
+                <p>
+
+                    Fast interactions,
+                    responsive layouts
+                    and fluid motion.
+
+                </p>
+
+
+                <div class="line"></div>
+
+            </article>
+
+
+
+            <article class="card reveal">
+
+                <div class="icon">
+                    ✦
+                </div>
+
+
+                <h3>
+                    MODERN
+                </h3>
+
+
+                <p>
+
+                    Minimal UI combined
+                    with futuristic
+                    glowing details.
+
+                </p>
+
+
+                <div class="line"></div>
+
+            </article>
+
+
+
+            <article class="card reveal">
+
+                <div class="icon">
+                    ◎
+                </div>
+
+
+                <h3>
+                    UNLIMITED
+                </h3>
+
+
+                <p>
+
+                    A scalable visual
+                    system ready for
+                    your complete website.
+
+                </p>
+
+
+                <div class="line"></div>
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<section
+    class="section"
+    id="about">
+
+
+    <div class="wrap about">
+
+
+        <div class="reveal">
+
+
+            <div class="eyebrow">
+                02 / THE VISION
+            </div>
+
+
+            <div class="quote">
+
+                “Simple on the surface.
+
+                <br>
+
+                <span>
+                    Powerful underneath.
+                </span>
+
+                ”
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="stats reveal">
+
+
+            <div class="stat">
+
+                <b>
+                    ∞
+                </b>
+
+                <small>
+                    POSSIBILITIES
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b>
+                    4K
+                </b>
+
+                <small>
+                    VISUAL AMBITION
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b>
+                    24/7
+                </b>
+
+                <small>
+                    DIGITAL PRESENCE
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b>
+                    01
+                </b>
+
+                <small>
+                    UNIQUE IDENTITY
+                </small>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<section
+    class="cta"
+    id="contact">
+
+
+    <div class="reveal">
+
+
+        <div class="eyebrow">
+            03 / NEXT LEVEL
+        </div>
+
+
+        <h2>
+
+            MAKE IT
+
+            <br>
+
+            <span>
+                ICONIC.
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Ready for the next stage?
+            Add real 3D Earth, particles,
+            magnetic cursor, cinematic
